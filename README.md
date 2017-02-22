@@ -10,7 +10,7 @@ The goals of this project are as following:
 
 ####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-Udacity provided a set of `vehicle` and `non-vehicle` images as training dataset for this project.  Here are example imagesof one of each of the `vehicle` and `non-vehicle` classes:
+Udacity provided a set of `vehicle` and `non-vehicle` images as training dataset for this project.  Here are couple of examples of each of the `vehicle` and `non-vehicle` classes:
 ![](output_images/car_notcar.png)
 
 
