@@ -1,4 +1,5 @@
-## Vehicle Detection in a dashcam video
+## Vehicle detection and bounding boxes around vehicles
+
 The goals of this project are as following:
 * Perform feature extraction (HOG, color etc.) on a labeled training set of images and train a classifier (e.g. Linear SVM classifier)
 * Implement a sliding-window technique and use the trained classifier to search for vehicles in test images and video frames
