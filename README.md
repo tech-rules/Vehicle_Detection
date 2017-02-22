@@ -1,4 +1,4 @@
-## Vehicle detection and bounding boxes around vehicles
+##Vehicle detection and bounding boxes
 
 The goals of this project are as following:
 * Perform feature extraction (HOG, color etc.) on a labeled training set of images and train a classifier
@@ -10,6 +10,7 @@ The goals of this project are as following:
 
 ####1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-The code for this step is contained in the first code cell of the IPython notebook (or in lines # through # of the file called `some_file.py`).  
+Udacity provided a set of `vehicle` and `non-vehicle` images as training dataset for this project.  Here are example imagesof one of each of the `vehicle` and `non-vehicle` classes:
+![](output_images/car_notcar.png)
 
-I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
+
