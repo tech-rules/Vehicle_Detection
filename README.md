@@ -70,4 +70,5 @@ Number of car images: 8792   Number of non-car images: 8968
 Using: 9 orientations 8 pixels per cell and 2 cells per block
 Feature vector length: 6108
 Test Accuracy of SVC =  0.993
-``
+```
+The training results of classifer, scaler, and training parameters were saved in a pickle file for later use during inference (lines 74-88 of [train.py](train.py))
