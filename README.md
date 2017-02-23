@@ -103,8 +103,11 @@ I have added the result of my video pipeline [video.py](video.py) after running 
 ####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes
 After identifying the "hot windows" in a frame, I generate a "heatmap" to identify and combine overlapping hot windows. E.g. Here is test image test6 after identifying hot windows:
 ![](output_images/hot_windows_test6.png)
+
 And here is the result of the same image after converting hot windows into heatmap:
+
 ![](output_images/heat_map_test6.png)
+
 As you can see from above, the overlapping hot windows get converted into a heat blob, removing the overlaps. 
 
 
