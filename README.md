@@ -21,7 +21,7 @@ cell_per_block = 2 # HOG cells per block
 color_space = 'YCrCb' # Can be RGB, HSV, LUV, HLS, YUV, YCrCb
 hog_channel = "ALL" # Can be 0, 1, 2, or "ALL"
 ```
-The parameter `orient` represents the number of orientation bins for the gradient histogram. Value of 9 is a good balance between the processing time and finer details of orientation. Intuitively, the parameter `pix_per_cell` is chosen to cover the smaller sized features e.g. tail lights and `cell_per_block` are chosen to cover larger sized features such as windows and wheels.  I tried different color spaces such as RGB, HSV etc. but got the best training results (99.3% validation accuracy) using color space of YCrCb and with all three channels for computing HOG. Here is a visualization of the HOG parameters selected as above, for car and non-car images:
+The parameter `orient` represents the number of orientation bins for the gradient histogram. Value of 9 is a good balance between the processing time and finer details of orientation. Intuitively, the parameter `pix_per_cell` is chosen to cover the smaller sized features e.g. tail lights and `cell_per_block` are chosen to cover larger sized features such as windows and wheels.  I tried different color spaces such as RGB, HSV etc. but got the best training results (99.3% validation accuracy) using color space of YCrCb and with all three channels for computing HOG. Here is a visualization of the HOG parameters selected as above, for car and non-car images (using cmap='heat'):
 ![](output_images/hog.png)
 ###Training Process 
 Apart from HOG, I also added spatial features and color histogram features to the feature vector going into the classifier ([train.py](train.py) lines 33-37). Udacity provided us with a few helper functions which are captured in [vd_functions.py](vd_functions.py). I used the `extract_features()` function to extract the above selected features for the list of car and non-car images.
@@ -108,8 +108,10 @@ And here is the result of the same image after converting hot windows into heatm
 
 ![](output_images/heat_map_test6.png)
 
-As you can see from above, the overlapping hot windows get converted into a heat blob, removing the overlaps. 
+As you can see from above, the overlapping hot windows get converted into a "heat blob", which will allow us to remove the overlap.
 
+In order to filter out the false positives, I take the sum of the heatmaps of each frame, for the 10 most recent frames, and filter out all the pixels for which this sum is less than or equal to 3. This code is implemented in [video.py](video.py) function `get_heat_sum` and lines 76-78. 
 
+Once I have  averaged and filtered the "heat blob" with the above method, I use `scipy.ndimage.measurements.label()` function to obtain a bounding box around car detections. (Lines 79-80 of [video.py](video.py))
 
 
