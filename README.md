@@ -39,7 +39,7 @@ notcar_features = extract_features(notcars, color_space=color_space,
                         hog_channel=hog_channel, spatial_feat=spatial_feat, 
                         hist_feat=hist_feat, hog_feat=hog_feat)
 ```
-The extracted features were then standardized (for making them zero mean and unit variance, across features) using sklearn.preprocessing `StandardScaler` function:
+The extracted features were then standardized (for making them zero mean and unit variance, across features) using sklearn.preprocessing `StandardScaler()` function:
 ```python
 X = np.vstack((car_features, notcar_features)).astype(np.float64)                        
 # Fit a per-column scaler
@@ -54,4 +54,12 @@ y = np.hstack((np.ones(len(car_features)), np.zeros(len(notcar_features))))
 # Split up data into randomized training and test sets
 rand_state = np.random.randint(0, 100)
 X_train, X_test, y_train, y_test = train_test_split(scaled_X, y, test_size=0.2, random_state=rand_state)
+```
+The final step in training is to identify a classifer and train it. I selected sklearn.svm `LinearSVC()` as the classifier and trained it using the data prepared as above.
+```python
+# Use a linear SVC 
+svc = LinearSVC()
+svc.fit(X_train, y_train)
+# Check the score of the SVC
+print('Test Accuracy of SVC = ', round(svc.score(X_test, y_test), 4))
 ```
