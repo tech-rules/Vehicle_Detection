@@ -99,7 +99,7 @@ Result of drawing the "hot windows" on test_images, with my final chosen method:
 
 ###Video Implementation
 ####1. Provide a link to your final video output
-I have added the result of my video pipeline [video.py](video.py) after running it on project_video.mp4 to this github repo. The link is: [project_output.mp4](project_output.mp4)
+I have added the result of my video pipeline ([video.py](video.py)) after running it on project_video.mp4 to this github repo. The link is: [project_output.mp4](project_output.mp4)
 ####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes
 After identifying the "hot windows" in a frame, I generate a "heatmap" to identify and combine overlapping hot windows. E.g. Here is test image test6 after identifying hot windows:
 ![](output_images/hot_windows_test6.png)
@@ -114,4 +114,5 @@ In order to filter out the false positives, I take the sum of the heatmaps of ea
 
 Once I have  averaged and filtered the "heat blob" with the above method, I use `scipy.ndimage.measurements.label()` function to obtain a bounding box around car detections. (Lines 79-80 of [video.py](video.py))
 
+###Discussion
 
