@@ -72,3 +72,13 @@ Feature vector length: 6108
 Test Accuracy of SVC =  0.993
 ```
 The training results of classifer, scaler, and training parameters were saved in a pickle file for later use during inference (lines 74-88 of [train.py](train.py))
+
+###Sliding Window Search
+
+####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
+
+![](output_images/search_windows.png)
+
+####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
+
+![](output_images/test_image_windows.png)
