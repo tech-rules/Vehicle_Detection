@@ -108,11 +108,11 @@ And here is the result of the same image after converting hot windows into heatm
 
 ![](output_images/heat_map_test6.png)
 
-As you can see from above, the overlapping hot windows get converted into a "heat blob", which will allow us to remove the overlap.
+As you can see from above, the overlapping hot windows get converted into a "heat blob", which allows us to combine the overlaps.
 
 In order to filter out the false positives, I take the sum of the heatmaps of each frame, for the 10 most recent frames, and filter out all the pixels for which this sum is less than or equal to 3. This code is implemented in [video.py](video.py) function `get_heat_sum` and lines 76-78. 
 
 Once I have  averaged and filtered the "heat blob" with the above method, I use `scipy.ndimage.measurements.label()` function to obtain a bounding box around car detections. (Lines 79-80 of [video.py](video.py))
 
 ###Discussion
-
+The challenge that I faced during this project was that there were many parameters and knobs to tweak, and with the limited amount of time that I had for this project, it is quite likely that a more optimal solution can be found. I have tried my solution on only the project video, it will most likely require some more tuning before it can give good results for different roads and under different weather and lighting conditions. Also, we trained the classifier only for cars, in real life, one would like to detect all sorts of vehicles on the road e.g. trucks, ambulances etc. Finally, my video pipeline is quite slow for any real time vehile detection (3.2 s/frame on my desktop) so identifying the performance bottlenecks and improving the speed of vehicle detection can be another future enhancement for this project.
