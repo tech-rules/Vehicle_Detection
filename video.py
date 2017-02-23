@@ -7,6 +7,13 @@ from moviepy.editor import VideoFileClip
 from scipy.ndimage.measurements import label
 
 def get_heat(image):
+    '''Function to run sliding window, serach for car in each window, and return the combined heat
+    Args:
+        image: Input image, or a frame from incoming video
+    Returns:
+        result: Heat array after adding for all the search window
+    '''
+    # Global variables for training parameters, classifer and feature scaling
     global svc, X_scaler, color_space, spatial_size, hist_bins, orient
     global pix_per_cell, cell_per_block, hog_channel, spatial_feat, hist_feat, hog_feat
     
@@ -39,6 +46,13 @@ def get_heat(image):
     return heat
 
 def get_heat_sum(heat):
+    '''Function to maintain heat_array across multiple frames
+    Args:
+        heat: Input heatmap for the current frame
+    Returns:
+        sum_h: Sum of heatmaps across 10 recent frames
+    '''
+    # Global heat_array to keep track of heat map across multiple frames
     global recent_heat_array
     
     recent_heat_array.append(heat)
