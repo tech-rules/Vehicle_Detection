@@ -63,3 +63,11 @@ svc.fit(X_train, y_train)
 # Check the score of the SVC
 print('Test Accuracy of SVC = ', round(svc.score(X_test, y_test), 4))
 ```
+After running the above training process using [train.py](train.py), the result of training is as follows:
+```
+$ python train.py
+Number of car images: 8792   Number of non-car images: 8968
+Using: 9 orientations 8 pixels per cell and 2 cells per block
+Feature vector length: 6108
+Test Accuracy of SVC =  0.993
+``
