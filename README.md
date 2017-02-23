@@ -76,6 +76,10 @@ The training results of classifer, scaler, and training parameters were saved in
 ###Sliding Window Search
 
 ####1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
+Identifying the region and sizes of sliding windows to search for cars was a critical task in this project. The right choices would lead to less false positives and be able to track vehicles better. Couple of observations while looking at the test_images:
+* We could limit the search region to below the horizon 
+* The cars closer to the ego vehicle are bigger in size, compared to cars further away
+With the above observations, I decided to use two different window sizes. 128x128 for the cars closer, and 96x96 for the cars further away. 
 
 ![](output_images/search_windows.png)
 
