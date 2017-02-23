@@ -80,11 +80,18 @@ Identifying the region and sizes of sliding windows to search for cars was a cri
 * We could limit the search region to below the horizon 
 * The cars closer to the ego vehicle are bigger in size, compared to cars further away
 
-With the above observations, I decided to use two different window sizes. I eventually settled on 128x128 for the cars closer, and 96x96 for the cars further away. These sizes were chosen based upon the observation of test images, and trying different sizes on test_images. I chose the overlap of 0.5 for both x and y directions. These choices for the sliding window search are implemented in [video.py](video.py) lines 20-26. Below is a visualization of the search windows, where red windows show 128x18 closer windows and blue windows show 96x96 far windows. 
+With the above observations, I decided to use two different window sizes. I eventually settled on 128x128 for the cars closer, and 96x96 for the cars further away. These sizes were chosen based upon the observation of test images, and trying different sizes on test_images. I chose the overlap of 0.5 for both x and y directions. These choices for the sliding window search are implemented in [video.py](video.py) lines 20-26, inside the `get_heat()` function. Below is a visualization of the search windows, where red windows show 128x18 closer windows and blue windows show 96x96 far windows. 
 
 ![](output_images/search_windows.png)
 
 ####2. Show some examples of test images to demonstrate how your pipeline is working.  What did you do to optimize the performance of your classifier?
 
-Result of drawing the "hot windows" detected with the above method on to test images: 
+Various parameters of the classifer and sliding window search were tweaked to eventually get a satisfiable result on the test images. Some of the experiemnts that I tried are:
+* Different color spaces
+* Different color channels for HOG
+* Adding spatial features and color histogram features
+* Different spatial sizes and histogram bin sizes
+* Different sliding window approaches and sizes
+
+Result of drawing the "hot windows" on test_images, with my final chosen method:
 ![](output_images/test_image_windows.png)
