@@ -79,7 +79,7 @@ The training results of classifer, scaler, and training parameters were saved in
 Identifying the region and sizes of sliding windows to search for cars was a critical task in this project. The right choices would lead to less false positives and be able to track vehicles better. Couple of observations while looking at the test_images:
 * We could limit the search region to below the horizon 
 * The cars closer to the ego vehicle are bigger in size, compared to cars further away
-With the above observations, I decided to use two different window sizes. 128x128 for the cars closer, and 96x96 for the cars further away. 
+With the above observations, I decided to use two different window sizes. 128x128 for the cars closer, and 96x96 for the cars further away. I chose the overlap of 0.5 for both x and y directions. These choices are implemented in [video.py](video.py) lines 20-26. Below is a visualization of search windows, where red windows show 128x18 closer windows and blue windows show 96x96 far windows. 
 
 ![](output_images/search_windows.png)
 
