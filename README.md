@@ -94,4 +94,14 @@ Various parameters of the classifer and sliding window search were tweaked to ev
 * Different sliding window approaches and sizes
 
 Result of drawing the "hot windows" on test_images, with my final chosen method:
+
 ![](output_images/test_image_windows.png)
+
+###Video Implementation
+####1. Provide a link to your final video output
+I have added the result of my video pipeline [video.py](video.py) after running it on project_video.mp4 to this github repo. The link is: [project_output.mp4](project_output.mp4)
+####2. Describe how (and identify where in your code) you implemented some kind of filter for false positives and some method for combining overlapping bounding boxes
+
+
+
+
