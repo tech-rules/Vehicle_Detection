@@ -23,4 +23,18 @@ hog_channel = "ALL" # Can be 0, 1, 2, or "ALL"
 ```
 The parameter `orient` represents the number of orientation bins for the gradient histogram. Value of 9 is a good balance between the processing time and finer details of orientation. Intuitively, the parameter `pix_per_cell` is chosen to cover the smaller sized features e.g. tail lights and `cell_per_block` are chosen to cover larger sized features such as windows and wheels.  I tried different color spaces such as RGB, HSV etc. but got the best training results (99.3% validation accuracy) using color space of YCrCb and with all three channels for computing HOG. Here is a visualization of the HOG parameters selected as above, for car and non-car images:
 ![](output_images/hog.png)
-Apart from HOG, I also added spatial features and color histogram features to the feature vector going into the classifier ([train.py](train.py) lines 33-37).
+Apart from HOG, I also added spatial features and color histogram features to the feature vector going into the classifier ([train.py](train.py) lines 33-37). Udacity provided us with a few helper functions which are captured in [vd_functions.py](vd_functions.py). I used the `extract_features()` function to extract the above selected features for the list of car and non-car images.
+```python
+car_features = extract_features(cars, color_space=color_space, 
+                        spatial_size=spatial_size, hist_bins=hist_bins, 
+                        orient=orient, pix_per_cell=pix_per_cell, 
+                        cell_per_block=cell_per_block, 
+                        hog_channel=hog_channel, spatial_feat=spatial_feat, 
+                        hist_feat=hist_feat, hog_feat=hog_feat)
+notcar_features = extract_features(notcars, color_space=color_space, 
+                        spatial_size=spatial_size, hist_bins=hist_bins, 
+                        orient=orient, pix_per_cell=pix_per_cell, 
+                        cell_per_block=cell_per_block, 
+                        hog_channel=hog_channel, spatial_feat=spatial_feat, 
+                        hist_feat=hist_feat, hog_feat=hog_feat)
+```
